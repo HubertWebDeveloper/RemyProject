@@ -1,0 +1,400 @@
+.lines{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+  .liness{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+  .row{
+      display: flex;
+  }
+  .row .sidebar{
+      width: 30%;
+  }
+  .row .main{
+      width: 70%;
+  }
+  .box{
+      width: 100%;
+      display:flex;
+      gap:2px;
+      flex-wrap:wrap;
+      margin-bottom: 4px;
+  }
+  .box a{
+      width:190px;
+      text-align:center;
+      text-decoration:none;
+      margin: 10px auto;
+  }
+  /* ====================== ======================= */
+  .card-img-top{
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      margin-right: 10px;
+  }
+  .card-title{
+      margin-bottom: 40px;
+  }
+  .line{
+      width:150px;height:4px;background:red;
+  }
+  /* ===================== end of quiz style ================ */
+  .info_box{
+      display: none;
+  }
+  .info_box.activeInfo{
+      display: block;
+  }
+  .quiz_box{
+      display: none;
+      width: 0;
+      height: 0;
+  }
+  .quiz_box.activeQuiz{
+      display: block;
+      width: 100%;
+  }
+  .result_box{
+      display: none;
+      width: 0;
+      height: 0;
+  }
+  .result_box.activeResult{
+      display: block;
+      width: 100%;
+  }
+  .card .result_box{
+      display: none;
+      width: 0;
+      height: 0;
+  }
+  .card .result_box.activeResult{
+      display: block;
+      width: 100%;
+  }
+  .card .typing.activeQuiz{
+      display: block;
+      width: 100%;
+  }
+  .card .typing{
+      display: none;
+      width: 0;
+      height: 0;
+  }
+  /* ============== box ======================= */
+  section .option_list{
+      padding: 20px 0px;
+      display: block;   
+  }
+  
+  section .option_list .option{
+      background: aliceblue;
+      border: 1px solid #84c5fe;
+      border-radius: 5px;
+      padding: 8px 15px;
+      font-size: 17px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  
+  section .option_list .option:last-child{
+      margin-bottom: 0px;
+  }
+  
+  section .option_list .option:hover{
+      color: #004085;
+      background: #cce5ff;
+      border: 1px solid #b8daff;
+  }
+  
+  section .option_list .option.correct{
+      color: #155724;
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+  }
+  
+  section .option_list .option.incorrect{
+      color: #721c24;
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+  }
+  
+  section .option_list .option.disabled{
+      pointer-events: none;
+  }
+  
+  section .option_list .option .icon{
+      height: 26px;
+      width: 26px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 13px;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      line-height: 24px;
+  }
+  .option_list .option .icon.tick{
+      color: #23903c;
+      border-color: #23903c;
+      background: #d4edda;
+  }
+  
+  .option_list .option .icon.cross{
+      color: #a42834;
+      background: #f8d7da;
+      border-color: #a42834;
+  }
+  /* ================== footer ===================== */
+  footer{
+      height: 60px;
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid lightgrey;
+  }
+  
+  footer .total_que span{
+      display: flex;
+      user-select: none;
+  }
+  
+  footer .total_que span p{
+      font-weight: 500;
+      padding: 0 5px;
+  }
+  
+  footer .total_que span p:first-child{
+      padding-left: 0px;
+  }
+  
+  footer button{
+      height: 40px;
+      padding: 0 13px;
+      font-size: 18px;
+      font-weight: 400;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      color: #fff;
+      border-radius: 5px;
+      background: #007bff;
+      border: 1px solid #007bff;
+      line-height: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.95);
+      transition: all 0.3s ease;
+  }
+  
+  footer button:hover{
+      background: #0263ca;
+  }
+  
+  footer button.show{
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+  }
+  /* ====================== result ======================== */
+  .result_box .icon{
+      font-size: 100px;
+      color: #007bff;
+      margin-bottom: 10px;
+  }
+  
+  .result_box .complete_text{
+      font-size: 20px;
+      font-weight: 500;
+  }
+  .result_box .score_text span{
+      display: flex;
+      margin: 10px 0;
+      font-size: 18px;
+      font-weight: 500;
+  }
+  
+  .result_box .score_text span p{
+      padding: 0 4px;
+      font-weight: 600;
+  }
+  /* ====================================================== typing game ======================================= */
+  
+  .card .input-field{
+    opacity: 0;
+    z-index: -999;
+    position: absolute;
+  }
+  .card .content-box{
+    padding: 13px 20px 0;
+    border-radius: 10px;
+    border: 1px solid #bfbfbf;
+  }
+  .typing-text::-webkit-scrollbar{
+    width: 0;
+  }
+  .typing-text p{
+    font-size: 21px;
+    text-align: justify;
+    letter-spacing: 1px;
+    word-break: break-all;
+  }
+  .typing-text p span{
+    position: relative;
+  }
+  .typing-text p span.correct{
+    color: #56964f;
+  }
+  .typing-text p span.incorrect{
+    color: #cb3439;
+    outline: 1px solid #fff;
+    background: #ffc0cb;
+    border-radius: 4px;
+  }
+  .typing-text p span.active{
+    color: #17A2B8;
+  }
+  .typing-text p span.active::before{
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    border-radius: 5px;
+    background: #17A2B8;
+    animation: blink 1s ease-in-out infinite;
+  }
+  @keyframes blink{
+    50%{ 
+      opacity: 1; 
+    }
+  }
+  .content-box .content{
+    margin-top: 17px;
+    display: flex;
+    padding: 12px 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #bfbfbf;
+  }
+  .content button{
+    outline: none;
+    border: none;
+    width: 105px;
+    color: #fff;
+    padding: 8px 0;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #17A2B8;
+    transition: transform 0.3s ease;
+  }
+  .content button:active{
+    transform: scale(0.97);
+  }
+  .content .result-details{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: calc(100% - 140px);
+    justify-content: space-between;
+  }
+  .result-details li{
+    display: flex;
+    height: 20px;
+    list-style: none;
+    position: relative;
+    align-items: center;
+  }
+  .result-details li:not(:first-child){
+    padding-left: 22px;
+    border-left: 1px solid #bfbfbf;
+  }
+  .result-details li p{
+    font-size: 19px;
+  }
+  .result-details li span{
+    display: block;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  li span b{
+    font-weight: 500;
+  }
+  li:not(:first-child) span{
+    font-weight: 500;
+  }
+  @media (max-width: 745px) {
+    .wrapper{
+      padding: 20px;
+    }
+    .content-box .content{
+      padding: 20px 0;
+    }
+    .content-box .typing-text{
+      max-height: 100%;
+    }
+    .typing-text p{
+      font-size: 19px;
+      text-align: left;
+    }
+    .content button{
+      width: 100%;
+      font-size: 15px;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+    .content .result-details{
+      width: 100%;
+    }
+    .result-details li:not(:first-child){
+      border-left: 0;
+      padding: 0;
+    }
+    .result-details li p, 
+    .result-details li span{
+      font-size: 17px;
+    }
+  }
+  @media (max-width: 518px) {
+    .wrapper .content-box{
+      padding: 10px 15px 0;
+    }
+    .typing-text p{
+      font-size: 18px;
+    }
+    .result-details li{
+      margin-bottom: 10px;
+    }
+    .content button{
+      margin-top: 10px;
+    }
+  }
+  /* ====================================================== end typing game ======================================= */
+  
+  
+  @media (max-width: 768px) {
+      .row .sidebar{
+          width: 100%;
+      }
+      .row .main{
+          width: 100%;
+      }
+  }

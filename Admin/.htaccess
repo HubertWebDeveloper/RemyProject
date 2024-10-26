@@ -1,0 +1,39 @@
+RewriteEngine on
+RewriteRule ^index(.*)$ index.php
+RewriteRule ^login(.*)$ login.php
+RewriteRule ^logout(.*)$ logout.php
+RewriteRule ^register(.*)$ register.php
+RewriteRule ^courseRegister(.*)$ courseRegister.php
+RewriteRule ^reportSession(.*)$ reportSession.php
+# admin side files
+RewriteRule ^pendingUsers(.*)$ admin.php?url=pendingUsers00 [L,QSA]
+RewriteRule ^approvedUsers(.*)$ admin.php?url=approvedUsers00 [L,QSA]
+RewriteRule ^sessionReported(.*)$ admin.php?url=sessionReported00 [L,QSA]
+RewriteRule ^studentCourses(.*)$ admin.php?url=studentCourses00 [L,QSA]
+RewriteRule ^viewCourses(.*)$ admin.php?url=viewCourses00 [L,QSA]
+RewriteRule ^addCourses(.*)$ admin.php?url=addCourses00 [L,QSA]
+
+RewriteRule ^practicalExam(.*)$ admin.php?url=practicalExam00 [L,QSA]
+RewriteRule ^theoryExam(.*)$ admin.php?url=theoryExam00 [L,QSA]
+
+RewriteRule ^practicalResults(.*)$ admin.php?url=practicalResults00 [L,QSA]
+RewriteRule ^theoryResults(.*)$ admin.php?url=theoryResults00 [L,QSA]
+
+RewriteRule ^practicalMarks(.*)$ admin.php?url=practicalMarks00 [L,QSA]
+RewriteRule ^theoryMarks(.*)$ admin.php?url=theoryMarks00 [L,QSA]
+#student side files
+RewriteRule ^examHistory(.*)$ student.php?url=examHistory00 [L,QSA]
+RewriteRule ^catHistory(.*)$ student.php?url=catHistory00 [L,QSA]
+RewriteRule ^exams(.*)$ student.php?url=exams00 [L,QSA]
+RewriteRule ^cats(.*)$ student.php?url=cats00 [L,QSA]
+
+#RewriteRule ^practicalResults(.*)$ practicalResults.php
+#RewriteRule ^practicalMarks(.*)$ practicalMarks.php
+#RewriteRule ^theoryExam(.*)$ theoryExam.php
+#RewriteRule ^theoryResults(.*)$ theoryResults.php
+#RewriteRule ^theoryMarks(.*)$ theoryMarks.php
+
+RewriteRule ^exams(.*)$ exams.php
+RewriteRule ^cats(.*)$ cats.php
+RewriteRule ^exam_feedback(.*)$ exam_feedback.php
+RewriteRule ^catHistory(.*)$ catHistory.php
