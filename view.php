@@ -4,6 +4,11 @@ if(isset($_GET['id'])){
     $idView = $_GET['id'];
     $cardViews = mysqli_query($con, "SELECT * FROM `cards` WHERE id='$idView' AND `status`='Posted'");
     $rows = mysqli_fetch_assoc($cardViews);
+    $categ = $rows['category'];
+    $com = $rows['compound'];
+
+    $compd = mysqli_query($con, "SELECT * FROM `compound` WHERE id='$com'");
+    $compd_row = mysqli_fetch_assoc($compd);
 
     $getImageView = mysqli_query($con, "SELECT * FROM `card_images` WHERE card_id='$idView'");
     $row = mysqli_fetch_assoc($getImageView);
@@ -66,12 +71,20 @@ if(isset($_GET['id'])){
                     </div>
                 </div>
                 <div class="company-details mt-2">
-                    <p class="fw-bold" style="color:#3b5d50"><i class="fas fa-building"style="margin-right:10px"></i> Reach Out</p>
+                    <p class="fw-bold" style="color:#3b5d50"><i class="fas fa-building"style="margin-right:10px"></i> Reach Out | More Info</p>
                     <div class="company-location">
-                        <p><i class="fas fa-phone"style="margin-right:10px"></i> CareTaker: <b>0742241398</b></p>
-                        <p><i class="fas fa-phone"style="margin-right:10px"></i> LandLord: <b>0742241398</b></p>
+                        <p><i class="fas fa-phone"style="margin-right:10px"></i> CareTaker: <b><?= $compd_row['c_contact'] ?></b></p>
+                        <p><i class="fas fa-phone"style="margin-right:10px"></i> LandLord: <b><?= $compd_row['l_contact'] ?></b></p>
                     </div>
                 </div>
+                <?php
+                if($categ == "B&B"){
+                    ?><p class="w-100 text-center"><b class="btn btn-sm bg-warning text-white">B&Bs</b></p><?php
+                }else{
+                    ?><p class="w-100 text-center"><b class="btn btn-sm bg-info text-white">Rents</b></p><?php
+                }
+                ?>
+                
             </div>
         </div>
     </div>

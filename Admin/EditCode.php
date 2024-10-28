@@ -10,12 +10,14 @@ if(isset($_POST['cardBtn'])){
     $desc = $_POST['desc'];
     $location = $_POST['location'];
     $date = date("Y-m-d");
+    $category = $_POST['category'];
+    $comp = $_POST['comp'];
     $status = "Posted";
     //echo $date;
 
 
-    $insertCard = mysqli_query($con, "INSERT INTO `cards`(`title`, `new_price`, `old_price`, `description`, `location`, `date`, `status`) 
-    VALUES ('$title','$newPrice','$oldPrice','$desc','$location','$date','$status')");
+    $insertCard = mysqli_query($con, "INSERT INTO `cards`(`title`, `new_price`, `old_price`, `description`, `location`, `category`, `compound`, `date`, `status`) 
+    VALUES ('$title','$newPrice','$oldPrice','$desc','$location','$category','$comp','$date','$status')");
 
     if($insertCard){
         echo "<script>window.open('Card.php','_self')</script>";

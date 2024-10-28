@@ -118,7 +118,7 @@
         </div>
     </div>
 </section>
-<div id="services" class="container row mx-auto mt-3 mb-3">
+<!-- <div id="services" class="container row mx-auto mt-3 mb-3">
     <div class="slick-slider">
         <div class="col-md-2">
             <img src="images/chine.png" width="45%" height="90" style="border-radius:50%;opacity:0.3">
@@ -157,23 +157,62 @@
             <img src="images/logo.png" width="45%" height="90" style="border-radius:50%;opacity:0.3">
         </div>
     </div>
-</div>
+</div> -->
 <!-- --------------- rating status ------------ -->
 <div class="rating" style="background-image:url('images/img8.jpg'); background-size: cover;">
     <div class="container row mx-auto mb-4" style="padding:20px">
         <div class="col-md-4 text-center text-light">
             <i style="font-size:23px" class="fas fa-house"></i>
-            <h4 style="font-size:33px" class="mt-2 mb-2">18 Million</h4>
-            <p>All Houses</p>
+            <h4 style="font-size:33px" class="mt-2 mb-2">
+                <?php
+                    if ($cards_count < 1000) {
+                        // Display with two leading zeros
+                        echo str_pad($cards_count, 3, '0', STR_PAD_LEFT);
+                    } elseif ($cards_count < 1000000) {
+                        // Display with 'K' for thousands
+                        echo round($cards_count / 1000, ($cards_count >= 10000 ? 0 : 1)) . 'K';
+                    } else {
+                        // Display with 'M' for millions
+                        echo round($cards_count / 1000000, ($cards_count >= 10000000 ? 0 : 1)) . 'M';
+                    }
+                ?>
+            </h4>
+            <p>All Rents Houses</p>
         </div>
         <div class="col-md-4 text-center text-light">
-            <i style="font-size:23px" class="fas fa-desktop"></i>
-            <h4 style="font-size:33px" class="mt-2 mb-2">30K +</h4>
-            <p>Digital Events</p>
+            <i style="font-size:23px" class="fas fa-building"></i>
+            <h4 style="font-size:33px" class="mt-2 mb-2">
+                <?php
+                    if ($bbs_count < 1000) {
+                        // Display with two leading zeros
+                        echo str_pad($bbs_count, 3, '0', STR_PAD_LEFT);
+                    } elseif ($bbs_count < 1000000) {
+                        // Display with 'K' for thousands
+                        echo round($bbs_count / 1000, ($bbs_count >= 10000 ? 0 : 1)) . 'K';
+                    } else {
+                        // Display with 'M' for millions
+                        echo round($bbs_count / 1000000, ($bbs_count >= 10000000 ? 0 : 1)) . 'M';
+                    }
+                ?>
+            </h4>
+            <p>All B&BS</p>
         </div>
         <div class="col-md-4 text-center text-light">
             <i style="font-size:23px" class="fas fa-users"></i>
-            <h4 style="font-size:33px" class="mt-2 mb-2">50K +</h4>
+            <h4 style="font-size:33px" class="mt-2 mb-2">
+                <?php
+                    if ($comps_count < 1000) {
+                        // Display with two leading zeros
+                        echo str_pad($comps_count, 3, '0', STR_PAD_LEFT);
+                    } elseif ($comps_count < 1000000) {
+                        // Display with 'K' for thousands
+                        echo round($comps_count / 1000, ($comps_count >= 10000 ? 0 : 1)) . 'K';
+                    } else {
+                        // Display with 'M' for millions
+                        echo round($comps_count / 1000000, ($comps_count >= 10000000 ? 0 : 1)) . 'M';
+                    }
+                ?>
+            </h4>
             <p>Compound Partnered</p>
         </div>
     </div>
@@ -187,7 +226,7 @@
         </div>
         <div class="row">
             <?php
-               foreach($cards as $card) : $id = $card['id'];
+               foreach($bbs as $bb) : $id = $bb['id'];
                $date = $card['date'];
                $newDate = date("M d, Y",strtotime($date));
                $getImage = mysqli_query($con, "SELECT * FROM `card_images` WHERE card_id='$id'");
@@ -216,14 +255,14 @@
                 </div>
                 <div class="card-body text-center mb-3">
                     <div class="head text-start mt-2">
-                        <h5 class="fw-bold" style="font-size:16px;margin-left:13px"><?= $card['title'] ?></h5>
+                        <h5 class="fw-bold" style="font-size:16px;margin-left:13px"><?= $bb['title'] ?> | <b class="btn btn-sm btn-info" style="color:white">B&Bs</b></h5>
                         <h6 class="fw-bold text-warning" style="margin-left:13px">Price Starts from: <i class="fas fa-check text-success"></i> Ksh<?= $card['new_price'] ?> / <span class="btn btn-warning text-white" style="text-decoration:line-through;padding:2px">Ksh <?= $card['old_price'] ?></span></h6>
                     </div>
                     <p class="card-text" style="font-size:15px">
-                        <i class="fas fa-house" style="margin-right:10px;color:#3b5d50"></i> House Desc: <b><?= $card['description'] ?></b> 
+                        <i class="fas fa-house" style="margin-right:10px;color:#3b5d50"></i> House Desc: <b><?= $bb['description'] ?></b> 
                     </p>
                     <p class="card-text" style="font-size:15px">
-                        <i class="fas fa-map-marker" style="margin-right:10px;color:#3b5d50"></i> Location: <?= $card['location'] ?>
+                        <i class="fas fa-map-marker" style="margin-right:10px;color:#3b5d50"></i> Location: <?= $bb['location'] ?>
                     </p>
                     <p class="card-text" style="font-size:15px">
                         <i class="fas fa-calendar" style="margin-right:10px;color:#3b5d50"></i> <?= $newDate ?> | 12:00 am - 1:00 am

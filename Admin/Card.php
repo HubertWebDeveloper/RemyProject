@@ -60,6 +60,8 @@ if (isset($_SESSION["warning"])) {
                         <th>Old_price</th>
                         <th>Description</th>
                         <th>Location</th>
+                        <th>Category</th>
+                        <th>Compound</th>
                         <th>Date</th>
                     </tr>
                 </thead>
@@ -82,6 +84,8 @@ if (isset($_SESSION["warning"])) {
                         <td><input type="text" name="old_price[<?= $admin['id'] ?>]" value="<?= $admin['old_price'] ?>" class="form-control" style="width:100px" readonly></td>
                         <td><input type="text" name="description[<?= $admin['id'] ?>]" value="<?= $admin['description'] ?>" class="form-control" style="width:350px" readonly></td>
                         <td><input type="text" name="location[<?= $admin['id'] ?>]" value="<?= $admin['location'] ?>" class="form-control" style="width:350px" readonly></td>
+                        <td><?= $admin['category'] ?></td>
+                        <td><?= $admin['compound'] ?></td>
                         <td><?= $admin['date'] ?></td>
                     </tr>
                     <?php endforeach; ?>
@@ -141,6 +145,25 @@ if (isset($_SESSION["warning"])) {
                                 <div class="input-group">
                                     <span class="input-group-text">Description</span>
                                     <textarea class="form-control" name="desc" placeholder="1 bedroom, kitchen, worshroom" aria-label="With textarea" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">Category</span>
+                                    <select name="category" class="form-select" id="inputGroupSelect01" required>
+                                       <option value="rent">Vacant House</option>
+                                       <option value="B&B">Vacant B&Bs</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">Compound</span>
+                                    <select name="comp" class="form-select" id="inputGroupSelect01" required>
+                                        <?php foreach($comps as $comp) : $id = $comp['id']; ?>
+                                        <option value="<?php $id ?>"><?= $comp['name'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>

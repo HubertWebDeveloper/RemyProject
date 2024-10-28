@@ -25,6 +25,8 @@ if(isset($_POST['userCardRequest'])){
     $desc = $_POST['desc'];
     $location = $_POST['location'];
     $date = date("Y-m-d");
+    $category = $_POST['category'];
+    $comp = $_POST['comp'];
     $status = "Unposted";
 
     $emailReq = $_POST['emailReq'];
@@ -33,8 +35,8 @@ if(isset($_POST['userCardRequest'])){
     $insertRequest = mysqli_query($con, "INSERT INTO `userrequest`(`email`, `phone`, `status`) 
     VALUES ('$emailReq','$phoneReq','Unpaid')");
 
-    $insertCard = mysqli_query($con, "INSERT INTO `cards`(`title`, `new_price`, `old_price`, `description`, `location`, `date`, `status`) 
-    VALUES ('$title','$newPrice','$oldPrice','$desc','$location','$date','$status')");
+    $insertCard = mysqli_query($con, "INSERT INTO `cards`(`title`, `new_price`, `old_price`, `description`, `location`, `category`, `compound`, `date`, `status`) 
+    VALUES ('$title','$newPrice','$oldPrice','$desc','$location','$category','$comp','$date','$status')");
 
     if($insertCard){
         // ============ now inserting images =============

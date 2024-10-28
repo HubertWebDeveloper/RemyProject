@@ -74,9 +74,14 @@ if (isset($_SESSION["warning"])) {
     unset($_SESSION["warning"]);
 }
 // ===================================================================================
-$cards = mysqli_query($con, "SELECT * FROM `cards` WHERE `status`='Posted'");
+$cards = mysqli_query($con, "SELECT * FROM `cards` WHERE `category`='rent' AND `status`='Posted'");
+$cards_count = mysqli_num_rows($cards);
+$bbs = mysqli_query($con, "SELECT * FROM `cards` WHERE `category`='B&B' AND `status`='Posted'");
+$bbs_count = mysqli_num_rows($bbs);
 $aderts = mysqli_query($con, "SELECT * FROM `advert` WHERE `status`='Posted'");
 $comments = mysqli_query($con, "SELECT * FROM `comments` WHERE `status`='Posted'");
+$comps = mysqli_query($con, "SELECT * FROM `compound`");
+$comps_count = mysqli_num_rows($comps);
 
 ?>
 <nav class="navbar navbar-expand-lg shadow" data-bs-theme="dark" style="background:#3b5d50">
@@ -265,6 +270,25 @@ $comments = mysqli_query($con, "SELECT * FROM `comments` WHERE `status`='Posted'
                         <div class="input-group">
                             <span class="input-group-text">Description</span>
                             <textarea class="form-control" name="desc" placeholder="1 bedroom, kitchen, worshroom" aria-label="With textarea" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Category</span>
+                            <select name="category" class="form-select" id="inputGroupSelect01" required>
+                                <option value="rent">Vacant House</option>
+                                <option value="B&B">Vacant B&Bs</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Compound</span>
+                            <select name="comp" class="form-select" id="inputGroupSelect01" required>
+                                <?php foreach($comps as $comp) : $id = $comp['id']; ?>
+                                <option value="<?php $id ?>"><?= $comp['name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
                     <!-- ============================= images =================================== -->
