@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Vacant Houses</title>
-  <link rel="shortcut icon" href="images/logo.png" />
+  <link rel="shortcut icon" href="images/logo.png" style="mix-blend-mode:multiply"/>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
@@ -41,7 +41,7 @@
     overflow: hidden;
   }
 </style>
-<body>
+<body style="background:#f2f3f4">
 <?php
 if (isset($_SESSION["success"])) {
     ?>
@@ -74,7 +74,7 @@ if (isset($_SESSION["warning"])) {
     unset($_SESSION["warning"]);
 }
 // ===================================================================================
-$cards = mysqli_query($con, "SELECT * FROM `cards` WHERE `category`='rent' AND `status`='Posted'");
+$cards = mysqli_query($con, "SELECT * FROM `cards` WHERE `status`='Posted'");
 $cards_count = mysqli_num_rows($cards);
 $bbs = mysqli_query($con, "SELECT * FROM `cards` WHERE `category`='B&B' AND `status`='Posted'");
 $bbs_count = mysqli_num_rows($bbs);
@@ -266,13 +266,7 @@ $comps_count = mysqli_num_rows($comps);
                             <input type="number" name="oldPrice" placeholder="Current Price" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <div class="input-group">
-                            <span class="input-group-text">Description</span>
-                            <textarea class="form-control" name="desc" placeholder="1 bedroom, kitchen, worshroom" aria-label="With textarea" required></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mb-3">
+                    <div class="col-md-6 mb-3">
                         <div class="input-group">
                             <span class="input-group-text">Category</span>
                             <select name="category" class="form-select" id="inputGroupSelect01" required>
@@ -281,7 +275,7 @@ $comps_count = mysqli_num_rows($comps);
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-12 mb-3">
+                    <div class="col-md-6 mb-3">
                         <div class="input-group">
                             <span class="input-group-text">Compound</span>
                             <select name="comp" class="form-select" id="inputGroupSelect01" required>
@@ -289,6 +283,12 @@ $comps_count = mysqli_num_rows($comps);
                                 <option value="<?php $id ?>"><?= $comp['name'] ?></option>
                                 <?php endforeach; ?>
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Description</span>
+                            <textarea class="form-control" name="desc" placeholder="1 bedroom, kitchen, worshroom" aria-label="With textarea" required></textarea>
                         </div>
                     </div>
                     <!-- ============================= images =================================== -->

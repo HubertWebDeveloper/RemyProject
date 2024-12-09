@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/customer1.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="logo.png" />
+  <link rel="shortcut icon" href="logo.png"  style="mix-blend-mode:multiply"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">

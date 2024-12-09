@@ -43,11 +43,11 @@ if(isset($_GET['id'])){
                 </div>
 
                 <div class="row mx-auto mt-2 mb-3">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <b><?= $rows['title'] ?></b>
                     </div>
-                    <div class="col-md-4">
-                        <h6 class="fw-bold" style="color:#3b5d50;margin-left:13px">
+                    <div class="col-md-6">
+                        <h6 class="fw-bold float-end" style="color:#3b5d50;margin-left:13px">
                                 <i class="fas fa-check text-success"></i> 
                                 Ksh<?= $rows['new_price'] ?> / 
                                 <span class="btn text-white" style="background:#3b5d50;text-decoration:line-through;padding:2px">Ksh<?= $rows['old_price'] ?>

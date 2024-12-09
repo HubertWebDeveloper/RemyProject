@@ -97,16 +97,17 @@ if (isset($_SESSION["warning"])) {
                                     <label class="input-group-text" for="inputGroupSelect01">Card ID</label>
                                     <select name="card_id" class="form-select" id="inputGroupSelect01" required>
                                         <?php foreach($cards as $card) : $id = $card['id']; ?>
-                                        <option value="<?php $id ?>"><?= $card['title'] ?></option>
+                                        <option value="<?php echo $id ?>"><?= $card['title'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <div class="input-group mb-3">
-                                    <input type="file" name="fileImg[]" class="form-control" accept=".jpg, .jpeg, .png" required multiple>
-                                    <label class="input-group-text" for="inputGroupSelect02">Upload Images</label>
-                                </div>
+                            <div class="input-group mb-3">
+                                <input type="file" name="fileImg[]" id="fileInput" class="form-control" accept=".jpg, .jpeg, .png" required multiple>
+                                <label class="input-group-text" for="fileInput">Upload Images</label>
+                            </div>
+                            <p id="errorMsg" style="color: red; display: none;">You can upload a maximum of 6 images only.</p>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -131,5 +132,21 @@ if (isset($_SESSION["warning"])) {
             }
         });
     }
+    document.getElementById('fileInput').addEventListener('change', function (event) {
+        const fileInput = event.target;
+        const files = fileInput.files;
+        const errorMsg = document.getElementById('errorMsg');
+
+        if (files.length > 6) {
+            // Show an error message
+            errorMsg.style.display = 'block';
+            errorMsg.textContent = 'You can upload a maximum of 6 images only.';
+            
+            // Clear the input
+            fileInput.value = '';
+        } else {
+            errorMsg.style.display = 'none'; // Hide the error message
+        }
+    });
 </script>
 <?php include("includes/footer.php") ?>

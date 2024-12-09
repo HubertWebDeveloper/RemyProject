@@ -46,6 +46,7 @@ if (isset($_SESSION["warning"])) {
     <div class="card-body mt-2 mb-4 border" style="padding:0 20px">
         <?php
             $admins = mysqli_query($con, "SELECT * FROM `cards` ORDER BY  id DESC");
+            $comps = mysqli_query($con, "SELECT * FROM `compound`");
             $i=0;
         ?>
         <div class="table-responsive">
@@ -69,7 +70,7 @@ if (isset($_SESSION["warning"])) {
                     <?php foreach($admins as $admin) : $i++; $id = $admin['id']; $status=$admin['status']; ?>
                     <tr>
                         <td style="position: sticky; left: 0; background-color: white;"><input type="checkbox" name="selected[]" value="<?= $admin['id'] ?>" class="row-select" onchange="toggleEditable(this)"></td>
-                        <td style="position: sticky; left: 40px; background-color: white;"><?= $i ?></td>
+                        <td style="position: sticky; left: 40px; background-color: white;"><?= $i ?> | <?= $id ?></td>
                         <td style="position: sticky; left: 80px; background-color: white;">
                             <?php
                             if($status=="Posted"){
@@ -141,29 +142,31 @@ if (isset($_SESSION["warning"])) {
                                     <input type="number" name="oldPrice" placeholder="Old Price" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-12 mb-3">
-                                <div class="input-group">
-                                    <span class="input-group-text">Description</span>
-                                    <textarea class="form-control" name="desc" placeholder="1 bedroom, kitchen, worshroom" aria-label="With textarea" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <div class="input-group">
                                     <span class="input-group-text">Category</span>
                                     <select name="category" class="form-select" id="inputGroupSelect01" required>
                                        <option value="rent">Vacant House</option>
                                        <option value="B&B">Vacant B&Bs</option>
+                                       <option value="Car">Car Rents</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">Compound</span>
+                                    <select name="comp" class="form-select" id="inputGroupSelect01" required>
+                                        <option value="">--Select--</option>
+                                        <?php foreach($comps as $comp) : $id = $comp['id']; ?>
+                                        <option value="<?php echo $id ?>"><?= $comp['name'] ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <div class="input-group">
-                                    <span class="input-group-text">Compound</span>
-                                    <select name="comp" class="form-select" id="inputGroupSelect01" required>
-                                        <?php foreach($comps as $comp) : $id = $comp['id']; ?>
-                                        <option value="<?php $id ?>"><?= $comp['name'] ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                    <span class="input-group-text">Description</span>
+                                    <textarea class="form-control" name="desc" placeholder="1 bedroom, kitchen, worshroom" aria-label="With textarea" required></textarea>
                                 </div>
                             </div>
                         </div>
